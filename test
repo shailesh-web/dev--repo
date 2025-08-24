@@ -1,2 +1,10 @@
-this is the first lin
-this is second line 
+Jenkins might be listening only on localhost
+Check listening ports:
+sudo lsof -i :8080
+If you see 127.0.0.1:8080, it means Jenkins is only bound to localhost.
+➡ Fix: Edit Jenkins config:
+sudo nano /etc/default/jenkins
+Find the line: HTTP_HOST=127.0.0.1
+Change it to: HTTP_HOST=0.0.0.0
+sudo systemctl restart jenkins
+
